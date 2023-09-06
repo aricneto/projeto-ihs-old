@@ -5,8 +5,10 @@
   <columns>
    <connections preferredWidth="95" />
    <irq preferredWidth="34" />
+   <export preferredWidth="246" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="2192" height="1467" x="0" y="0" />
+ <library
+   expandedCategories="Library/Processors and Peripherals/Peripherals,Library/Interface Protocols,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Interface Protocols/PCI Express,Library,Library/Processors and Peripherals,Project" />
+ <window width="2718" height="1705" x="1326" y="523" />
 </preferences>
