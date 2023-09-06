@@ -104,20 +104,20 @@ module pcihello (
   //=======================================================
 
   pcihellocore u0 (
-      .pcie_hard_ip_0_rx_in_rx_datain_0        (PCIE_RX_P[0]),
-      .pcie_hard_ip_0_tx_out_tx_dataout_0      (PCIE_TX_P[0]),
-      .pcie_hard_ip_0_powerdown_pll_powerdown  (PCIE_WAKE_N),
-      .pcie_hard_ip_0_powerdown_gxb_powerdown  (PCIE_WAKE_N),
-      .pcie_hard_ip_0_refclk_export            (PCIE_REFCLK_P),
-      .pcie_hard_ip_0_pcie_rstn_export         (PCIE_PERST_N),
-      .hex_display_external_connection_export  (hex_bus),
-      .hex_display2_external_connection_export (hex_bus2),
-      .inport_external_connection_export       (inbus),
-      .switches_external_connection            (switches_bus),
-      .push_buttons_external_connection        (push_buttons_bus),
-      .red_leds_external_connection            (led_red_bus),
-      .green_leds_external_connection          (led_grn_bus),
-      .fan_control_external_connection         (fan_bus)
+      .pcie_hard_ip_0_rx_in_rx_datain_0          (PCIE_RX_P[0]),
+      .pcie_hard_ip_0_tx_out_tx_dataout_0        (PCIE_TX_P[0]),
+      .pcie_hard_ip_0_powerdown_pll_powerdown    (PCIE_WAKE_N),
+      .pcie_hard_ip_0_powerdown_gxb_powerdown    (PCIE_WAKE_N),
+      .pcie_hard_ip_0_refclk_export              (PCIE_REFCLK_P),
+      .pcie_hard_ip_0_pcie_rstn_export           (PCIE_PERST_N),
+      .hex_display_external_connection_export    (hex_bus),
+      .hex_display_2_external_connection_export  (hex_bus2),
+      .inport_external_connection_export         (inbus),
+      .switches_external_connection_export       (switches_bus),
+      .push_buttons_external_connection_export   (push_buttons_bus),
+      .red_leds_external_connection_export       (led_red_bus),
+      .green_leds_external_connection_export     (led_grn_bus),
+      .fan_control_external_connection_export    (fan_bus)
   );
 
 
