@@ -139,6 +139,6 @@ module pcihello (
   assign switches_bus[17:0] = SW[17:0];
 
   // push buttons
-  assign push_buttons_bus[3:0] = KEY;
+  assign push_buttons_bus[3:0] = KEY[3:0];
 
 endmodule
