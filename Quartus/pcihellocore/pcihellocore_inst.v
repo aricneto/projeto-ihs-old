@@ -9,7 +9,8 @@
 		.hex_display_2_external_connection_export (<connected-to-hex_display_2_external_connection_export>), // hex_display_2_external_connection.export
 		.hex_display_external_connection_export   (<connected-to-hex_display_external_connection_export>),   //   hex_display_external_connection.export
 		.switches_external_connection_export      (<connected-to-switches_external_connection_export>),      //      switches_external_connection.export
-		.fan_control_external_connection_export   (<connected-to-fan_control_external_connection_export>),   //   fan_control_external_connection.export
+		.fan_control_external_connection_in_port  (<connected-to-fan_control_external_connection_in_port>),  //   fan_control_external_connection.in_port
+		.fan_control_external_connection_out_port (<connected-to-fan_control_external_connection_out_port>), //                                  .out_port
 		.green_leds_external_connection_export    (<connected-to-green_leds_external_connection_export>),    //    green_leds_external_connection.export
 		.red_leds_external_connection_export      (<connected-to-red_leds_external_connection_export>),      //      red_leds_external_connection.export
 		.push_buttons_external_connection_export  (<connected-to-push_buttons_external_connection_export>)   //  push_buttons_external_connection.export

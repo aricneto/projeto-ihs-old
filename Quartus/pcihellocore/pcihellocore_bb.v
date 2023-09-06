@@ -10,7 +10,8 @@ module pcihellocore (
 	hex_display_2_external_connection_export,
 	hex_display_external_connection_export,
 	switches_external_connection_export,
-	fan_control_external_connection_export,
+	fan_control_external_connection_in_port,
+	fan_control_external_connection_out_port,
 	green_leds_external_connection_export,
 	red_leds_external_connection_export,
 	push_buttons_external_connection_export);	
@@ -25,7 +26,8 @@ module pcihellocore (
 	output	[31:0]	hex_display_2_external_connection_export;
 	output	[31:0]	hex_display_external_connection_export;
 	input	[31:0]	switches_external_connection_export;
-	output		fan_control_external_connection_export;
+	input		fan_control_external_connection_in_port;
+	output		fan_control_external_connection_out_port;
 	output	[31:0]	green_leds_external_connection_export;
 	output	[31:0]	red_leds_external_connection_export;
 	input	[31:0]	push_buttons_external_connection_export;

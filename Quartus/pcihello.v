@@ -90,7 +90,6 @@ module pcihello (
 
   wire [31:0] hex_bus;
   wire [31:0] hex_bus2;
-  wire [31:0] inbus;
 
   wire [31:0] switches_bus;
   wire [31:0] push_buttons_bus;
@@ -112,7 +111,6 @@ module pcihello (
       .pcie_hard_ip_0_pcie_rstn_export           (PCIE_PERST_N),
       .hex_display_external_connection_export    (hex_bus),
       .hex_display_2_external_connection_export  (hex_bus2),
-      .inport_external_connection_export         (inbus),
       .switches_external_connection_export       (switches_bus),
       .push_buttons_external_connection_export   (push_buttons_bus),
       .red_leds_external_connection_export       (led_red_bus),
@@ -124,16 +122,24 @@ module pcihello (
   //////////// FAN Control //////////
   assign FAN_CTRL = 1'b1;  // turn off FAN
 
+  // 7seg
   assign HEX0 = hex_bus[6:0];
   assign HEX1 = hex_bus[14:8];
   assign HEX2 = hex_bus[22:16];
   assign HEX3 = hex_bus[30:24];
-
   assign HEX4 = hex_bus2[6:0];
   assign HEX5 = hex_bus2[14:8];
   assign HEX6 = hex_bus2[22:16];
   assign HEX7 = hex_bus2[30:24];
 
-  assign inbus = SW[15:0];
+  // leds
+  assign LEDR = led_grn_bus[8:0];
+  assign LEDG = led_red_bus[17:0];
+
+  // switches
+  assign switches_bus[15:0] = SW[15:0];
+
+  // push buttons
+  assign push_buttons_bus[3:0] = KEY;
 
 endmodule

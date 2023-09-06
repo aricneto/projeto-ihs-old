@@ -4,7 +4,8 @@
 
 `timescale 1 ps / 1 ps
 module pcihellocore (
-		output wire        fan_control_external_connection_export,   //   fan_control_external_connection.export
+		input  wire        fan_control_external_connection_in_port,  //   fan_control_external_connection.in_port
+		output wire        fan_control_external_connection_out_port, //                                  .out_port
 		output wire [31:0] green_leds_external_connection_export,    //    green_leds_external_connection.export
 		output wire [31:0] hex_display_2_external_connection_export, // hex_display_2_external_connection.export
 		output wire [31:0] hex_display_external_connection_export,   //   hex_display_external_connection.export
@@ -91,7 +92,8 @@ module pcihellocore (
 		.writedata  (mm_interconnect_0_fan_control_s1_writedata),  //                    .writedata
 		.chipselect (mm_interconnect_0_fan_control_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_fan_control_s1_readdata),   //                    .readdata
-		.out_port   (fan_control_external_connection_export)       // external_connection.export
+		.in_port    (fan_control_external_connection_in_port),     // external_connection.export
+		.out_port   (fan_control_external_connection_out_port)     //                    .export
 	);
 
 	pcihellocore_green_leds green_leds (
