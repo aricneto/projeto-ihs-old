@@ -115,12 +115,11 @@ module pcihello (
       .push_buttons_external_connection_export   (push_buttons_bus),
       .red_leds_external_connection_export       (led_red_bus),
       .green_leds_external_connection_export     (led_grn_bus),
-      .fan_control_external_connection_export    (fan_bus)
   );
 
 
   //////////// FAN Control //////////
-  assign FAN_CTRL = 1'b1;  // turn off FAN
+  assign FAN_CTRL = 1'b1;  // turn on FAN
 
   // 7seg
   assign HEX0 = hex_bus[6:0];
