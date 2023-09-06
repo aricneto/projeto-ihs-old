@@ -136,7 +136,7 @@ module pcihello (
   assign LEDG = led_green_bus[8:0];
 
   // switches
-  assign switches_bus[15:0] = SW[15:0];
+  assign switches_bus[17:0] = SW[17:0];
 
   // push buttons
   assign push_buttons_bus[3:0] = KEY;
