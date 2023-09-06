@@ -2,7 +2,8 @@
     "python.analysis.typeCheckingMode": "basic",
     "files.associations": {
         "module.h": "c",
-        "init.h": "c"
+        "init.h": "c",
+        "ioctl_cmds.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "C_Cpp.default.compilerPath": "/usr/bin/g++"
