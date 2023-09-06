@@ -132,8 +132,8 @@ module pcihello (
   assign HEX7 = hex_bus2[30:24];
 
   // leds
-  assign LEDR = led_red_bus[8:0];
-  assign LEDG = led_grn_bus[17:0];
+  assign LEDR = led_red_bus[17:0];
+  assign LEDG = led_grn_bus[8:0];
 
   // switches
   assign switches_bus[15:0] = SW[15:0];
