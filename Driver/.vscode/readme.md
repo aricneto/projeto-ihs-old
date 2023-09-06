@@ -9,4 +9,4 @@ Many includes were moved around, so we have to do some symlink magic to get vsco
 
     malloc.h and thread_info.h moved to include/linux
     cd /usr/src/linux-headers/../include/asm
-    $sudo ln -s linux/thread_info.h
+    $ sudo ln -s linux/thread_info.h
