@@ -94,7 +94,7 @@ module pcihello (
   wire [31:0] switches_bus;
   wire [31:0] push_buttons_bus;
   wire [31:0] led_red_bus;
-  wire [31:0] led_grn_bus;
+  wire [31:0] led_green_bus;
   wire        fan_bus;
 
 
@@ -114,7 +114,7 @@ module pcihello (
       .switches_external_connection_export       (switches_bus),
       .push_buttons_external_connection_export   (push_buttons_bus),
       .red_leds_external_connection_export       (led_red_bus),
-      .green_leds_external_connection_export     (led_grn_bus),
+      .green_leds_external_connection_export     (led_green_bus),
   );
 
 
@@ -133,7 +133,7 @@ module pcihello (
 
   // leds
   assign LEDR = led_red_bus[17:0];
-  assign LEDG = led_grn_bus[8:0];
+  assign LEDG = led_green_bus[8:0];
 
   // switches
   assign switches_bus[15:0] = SW[15:0];
