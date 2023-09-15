@@ -27,9 +27,13 @@ def main():
     for i in range(0, 100000):
         data = i
 
-        n = le_switch()
-        liga_led(n, WR_RED_LEDS)
-        sleep(0.1)
+        sw = le_switch()
+        b = le_botao()
+        liga_led(sw, WR_RED_LEDS)
+        #liga_led(b, WR_GREEN_LEDS)
+        #liga_led(b, WR_L_DISPLAY)
+        #liga_led(b, WR_R_DISPLAY)
+        sleep(0.1) 
 
     # for i in range(20):
     #     ioctl(fd, RD_PBUTTONS)
@@ -52,8 +56,17 @@ def le_switch():
     sleep(0.1)
     return n
 
+def le_botao():
+    ioctl(fd, RD_PBUTTONS)
+    red = os.read(fd, 4); # read 4 bytes and store in red var
+    red = os.read(fd, 4); # read 4 bytes and store in red var
+    n = int.from_bytes(red, 'little')
+    print(f"buttons {n:04b}")
+    sleep(0.1)
+    return n
+
 def liga_led(leds, cor):
-    if (cor not in [WR_RED_LEDS, WR_GREEN_LEDS]):
+    if (cor not in [WR_RED_LEDS, WR_GREEN_LEDS, WR_L_DISPLAY, WR_R_DISPLAY]):
         print ("nao existe essa cor")
         return 0
     global fd
