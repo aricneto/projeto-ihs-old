@@ -1,48 +1,65 @@
-#!/usr/bin/env python3
-import tcod
+#!/usr/bin/python3
 
-from engine import Engine
-from entity import Entity
-from game_map import GameMap
-from input_handlers import EventHandler
+import os, sys
+from fcntl import ioctl
+from time import sleep
 
+# ioctl commands defined at the pci driver
+RD_SWITCHES   = 24929
+RD_PBUTTONS   = 24930
+WR_L_DISPLAY  = 24931
+WR_R_DISPLAY  = 24932
+WR_RED_LEDS   = 24933
+WR_GREEN_LEDS = 24934
 
-def main() -> None:
-    screen_width = 80
-    screen_height = 50
+def main():
+    if len(sys.argv) < 2:
+        print("Error: expected more command line arguments")
+        print("Syntax: %s </dev/device_file>"%sys.argv[0])
+        exit(1)
 
-    map_width = 80
-    map_height = 45
+    global fd
+    fd = os.open(sys.argv[1], os.O_RDWR)
 
-    tileset = tcod.tileset.load_tilesheet(
-        "dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD
-    )
+    # data to write
+    data = 0x40404079;
 
-    event_handler = EventHandler()
+    for i in range(0, 100000):
+        data = i
 
-    player = Entity(x=int(screen_width / 2), y=int(screen_height / 2), char="@", color=(255, 0, 255))
-    npc = Entity(x=int(screen_width / 2 - 5), y=int(screen_height / 2), char="@", color=(255, 255, 0))
-    entities = {npc, player}
+        n = le_switch()
+        liga_led(n, WR_RED_LEDS)
+        sleep(0.1)
 
-    game_map = GameMap(map_width, map_height)
+    # for i in range(20):
+    #     ioctl(fd, RD_PBUTTONS)
+    #     red = os.read(fd, 4); # read 4 bytes and store in red var
+    #     red = os.read(fd, 4); # read 4 bytes and store in red var
+    #     n = int.from_bytes(red, 'little')
+    #     print(f"button {n:04b}")
+    #     sleep(0.5)
 
-    engine = Engine(entities=entities, event_handler=event_handler, game_map=game_map, player=player)
+    
 
-    with tcod.context.new(
-        columns=screen_width,
-        rows=screen_height,
-        tileset=tileset,
-        title="Test Main!",
-        vsync=True,
-    ) as context:
-        root_console = tcod.console.Console(screen_width, screen_height, order="F")
-        while True:
-            engine.render(console=root_console, context=context)
+    os.close(fd)
 
-            events = tcod.event.wait()
+def le_switch():
+    ioctl(fd, RD_SWITCHES)
+    red = os.read(fd, 4); # read 4 bytes and store in red var
+    red = os.read(fd, 4); # read 4 bytes and store in red var
+    n = int.from_bytes(red, 'little')
+    print(f"switch {n:016b}")
+    sleep(0.1)
+    return n
 
-            engine.handle_events(events)
+def liga_led(leds, cor):
+    if (cor not in [WR_RED_LEDS, WR_GREEN_LEDS]):
+        print ("nao existe essa cor")
+        return 0
+    global fd
+    ioctl(fd, cor)
+    retval = os.write(fd, leds.to_bytes(4, 'little'))
+    print(f"led ({cor}) [{retval}]: ({leds:018b})")
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

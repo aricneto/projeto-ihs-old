@@ -234,27 +234,27 @@ static long int my_ioctl(struct file*, unsigned int cmd, unsigned long arg)
 {
 	switch(cmd){
 	case RD_SWITCHES:
-		read_pointer = bar0_mmio + 0xC080;
+		read_pointer = bar0_mmio + 0xF080;
 		rd_name_idx = IDX_SWITCH;
 		break;
 	case RD_PBUTTONS:
-		read_pointer = bar0_mmio + 0xC0A0;
+		read_pointer = bar0_mmio + 0xF0A0;
 		rd_name_idx = IDX_PBUTTONS;
 		break;
 	case WR_L_DISPLAY:
-		write_pointer = bar0_mmio + 0xC020;
+		write_pointer = bar0_mmio + 0xF020;
 		wr_name_idx = IDX_DISPLAYL;
 		break;
 	case WR_R_DISPLAY:
-		write_pointer = bar0_mmio + 0xC200;
+		write_pointer = bar0_mmio + 0xF200;
 		wr_name_idx = IDX_DISPLAYR;
 		break;
 	case WR_RED_LEDS:
-		write_pointer = bar0_mmio + 0xC040;
+		write_pointer = bar0_mmio + 0xF040;
 		wr_name_idx = IDX_GREENLED;
 		break;
 	case WR_GREEN_LEDS:
-		write_pointer = bar0_mmio + 0xC060;
+		write_pointer = bar0_mmio + 0xF060;
 		wr_name_idx = IDX_REDLED;
 		break;
 	default:
@@ -299,8 +299,8 @@ static int __init my_pci_probe(struct pci_dev *dev, const struct pci_device_id *
 	bar0_mmio = pci_iomap(dev, 0, bar_len);
 
 	/* initialize a default peripheral read and write pointer */
-	write_pointer = bar0_mmio + 0xC000; //TODO: update offset
-	read_pointer  = bar0_mmio + 0xC080; //TODO: update offset
+	write_pointer = bar0_mmio + 0xF040; //TODO: update offset
+	read_pointer  = bar0_mmio + 0xF080; //TODO: update offset
 
 	return 0;
 }
