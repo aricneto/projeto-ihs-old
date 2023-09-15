@@ -246,11 +246,11 @@ static long int my_ioctl(struct file*, unsigned int cmd, unsigned long arg)
 		wr_name_idx = IDX_DISPLAYL;
 		break;
 	case WR_R_DISPLAY:
-		write_pointer = bar0_mmio + 0xF200;
+		write_pointer = bar0_mmio + 0xFA00;
 		wr_name_idx = IDX_DISPLAYR;
 		break;
 	case WR_RED_LEDS:
-		write_pointer = bar0_mmio + 0xF040;
+		write_pointer = bar0_mmio + 0xFB40;
 		wr_name_idx = IDX_GREENLED;
 		break;
 	case WR_GREEN_LEDS:

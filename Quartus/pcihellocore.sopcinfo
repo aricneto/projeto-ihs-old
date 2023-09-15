@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="pcihellocore" kind="pcihellocore" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2023.09.15.14:56:49 -->
+ <!-- 2023.09.15.16:08:59 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1694800609</value>
+  <value>1694804939</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -7056,7 +7056,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>red_leds</moduleName>
     <slaveName>s1</slaveName>
     <name>red_leds.s1</name>
-    <baseAddress>61504</baseAddress>
+    <baseAddress>64320</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -7080,7 +7080,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>hex_display</moduleName>
     <slaveName>s1</slaveName>
     <name>hex_display.s1</name>
-    <baseAddress>61952</baseAddress>
+    <baseAddress>64000</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -10477,7 +10477,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0xf040</value>
+   <value>0xfb40</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10630,7 +10630,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0xf200</value>
+   <value>0xfa00</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
