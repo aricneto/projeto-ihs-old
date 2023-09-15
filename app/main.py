@@ -24,6 +24,9 @@ def main():
     # data to write
     data = 0x40404079;
 
+    liga_led(0x0000, WR_RED_LEDS)
+    liga_led(0x0000, WR_RED_LEDS)
+
     for i in range(0, 100000):
         data = i
 
@@ -31,7 +34,7 @@ def main():
         #b = le_botao()
         liga_led(sw, WR_RED_LEDS)
         #liga_led(0b0101010100101, WR_RED_LEDS)
-        #liga_led(0b01010101, WR_GREEN_LEDS)
+        liga_led(sw, WR_GREEN_LEDS)
         #liga_led(b, WR_L_DISPLAY)
         #liga_led(b, WR_R_DISPLAY)
         #sleep(0.1) 
@@ -54,7 +57,7 @@ def le_switch():
     red = os.read(fd, 4); # read 4 bytes and store in red var
     n = int.from_bytes(red, 'little')
     print(f"switch {n:016b}")
-    #sleep(0.1)
+    sleep(0.1)
     return n
 
 def le_botao():
@@ -63,7 +66,7 @@ def le_botao():
     red = os.read(fd, 4); # read 4 bytes and store in red var
     n = int.from_bytes(red, 'little')
     print(f"buttons {n:04b}")
-    #sleep(0.1)
+    sleep(0.1)
     return n
 
 def liga_led(leds, cor):
