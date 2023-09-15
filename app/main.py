@@ -24,8 +24,8 @@ def main():
     # data to write
     data = 0x40404079;
 
-    liga_led(0x0000, WR_RED_LEDS)
-    liga_led(0x0000, WR_RED_LEDS)
+    liga_led(0x0, WR_RED_LEDS)
+    liga_led(0x0, WR_RED_LEDS)
 
     for i in range(0, 100000):
         data = i
