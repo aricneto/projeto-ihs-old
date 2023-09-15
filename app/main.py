@@ -27,10 +27,11 @@ def main():
     for i in range(0, 100000):
         data = i
 
-        #sw = le_switch()
+        sw = le_switch()
         #b = le_botao()
-        liga_led(0b0101010100101, WR_RED_LEDS)
-        liga_led(0b01010101, WR_GREEN_LEDS)
+        liga_led(sw, WR_RED_LEDS)
+        #liga_led(0b0101010100101, WR_RED_LEDS)
+        #liga_led(0b01010101, WR_GREEN_LEDS)
         #liga_led(b, WR_L_DISPLAY)
         #liga_led(b, WR_R_DISPLAY)
         #sleep(0.1) 
