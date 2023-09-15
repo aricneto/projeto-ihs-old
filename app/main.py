@@ -21,18 +21,23 @@ def main():
     global fd
     fd = os.open(sys.argv[1], os.O_RDWR)
 
+    #wait until fd is loaded
+    print("loading")
+    sleep(5)
+    print("loaded\n\n")
+
     # data to write
     data = 0x40404079;
 
-    #liga_led(0x0, WR_RED_LEDS)
-    #liga_led(0x0, WR_RED_LEDS)
+    liga_led(0x0, WR_RED_LEDS)
+    liga_led(0x0, WR_GREEN_LEDS)
 
     for i in range(0, 100000):
         data = i
 
         #sw = le_switch()
         #b = le_botao()
-        liga_led(0b01101010101, WR_RED_LEDS)
+        liga_led(i, WR_RED_LEDS)
         #liga_led(0b0101010100101, WR_RED_LEDS)
         #liga_led(sw, WR_GREEN_LEDS)
         #liga_led(b, WR_L_DISPLAY)
@@ -54,7 +59,7 @@ def main():
 def le_switch():
     ioctl(fd, RD_SWITCHES)
     red = os.read(fd, 4); # read 4 bytes and store in red var
-    red = os.read(fd, 4); # read 4 bytes and store in red var
+    #red = os.read(fd, 4); # read 4 bytes and store in red var
     n = int.from_bytes(red, 'little')
     print(f"switch {n:016b}")
     sleep(0.1)
@@ -63,7 +68,7 @@ def le_switch():
 def le_botao():
     ioctl(fd, RD_PBUTTONS)
     red = os.read(fd, 4); # read 4 bytes and store in red var
-    red = os.read(fd, 4); # read 4 bytes and store in red var
+    #red = os.read(fd, 4); # read 4 bytes and store in red var
     n = int.from_bytes(red, 'little')
     print(f"buttons {n:04b}")
     sleep(0.1)

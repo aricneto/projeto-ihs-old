@@ -17,3 +17,6 @@ o bit do display é escrito direita pra esquerda
 SWITCHES:
 o switch0 é o menos significativo, o switch17 é o mais significativo
 
+
+programar os vermelhos, se for usar os verdes, linkar eles com o switch
+
