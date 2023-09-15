@@ -24,15 +24,15 @@ def main():
     # data to write
     data = 0x40404079;
 
-    liga_led(0x0, WR_RED_LEDS)
-    liga_led(0x0, WR_RED_LEDS)
+    #liga_led(0x0, WR_RED_LEDS)
+    #liga_led(0x0, WR_RED_LEDS)
 
     for i in range(0, 100000):
         data = i
 
-        sw = le_switch()
+        #sw = le_switch()
         #b = le_botao()
-        liga_led(sw, WR_RED_LEDS)
+        liga_led(0b01101010101, WR_RED_LEDS)
         #liga_led(0b0101010100101, WR_RED_LEDS)
         #liga_led(sw, WR_GREEN_LEDS)
         #liga_led(b, WR_L_DISPLAY)
