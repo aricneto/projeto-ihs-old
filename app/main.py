@@ -23,27 +23,52 @@ def main():
 
     #wait until fd is loaded
     print("loading")
-    sleep(5)
+    sleep(3)
     print("loaded\n\n")
 
     # data to write
     data = 0x40404079;
 
-    liga_led(0x0, WR_RED_LEDS)
-    liga_led(0x0, WR_GREEN_LEDS)
+    #liga_led(0b101010101010101010, WR_RED_LEDS)
+    #liga_led(0b101010101, WR_GREEN_LEDS)
+    
+    #sleep(2)
+    for i in range(2):
+        #liga_led(0b1001111010011110, WR_R_DISPLAY)
+        liga_led(0b010001100100000010000001101000000, WR_R_DISPLAY)
 
-    for i in range(0, 100000):
-        data = i
+    
+#    with os.fdopen(os.open(sys.argv[1], os.O_RDWR), "w") as fdd:
+#        ioctl(fdd, RD_SWITCHES)
+#        k = os.read(fdd, 4)
+#        n = int.from_bytes(red, 'little')
+#        print(f"{n:016b}")
+    #for i in range(0, 5):
+        #data = i
 
         #sw = le_switch()
         #b = le_botao()
-        liga_led(i, WR_RED_LEDS)
-        #liga_led(0b0101010100101, WR_RED_LEDS)
-        #liga_led(sw, WR_GREEN_LEDS)
-        #liga_led(b, WR_L_DISPLAY)
+        #liga_led(i, WR_R_DISPLAY)
+        #liga_led(sw, WR_RED_LEDS)
+        #sleep(1)
+        #liga_led(b, WR_GREEN_LEDS)
+        #sleep(1)
+	#liga_led(b, WR_L_DISPLAY)
         #liga_led(b, WR_R_DISPLAY)
-        #sleep(0.1) 
+        #sleep(0.005) 
 
+    print("botao")
+
+    while True:
+        b = le_botao()
+        sw = le_switch()
+        liga_led(b, WR_GREEN_LEDS)
+        liga_led(sw, WR_RED_LEDS)
+        liga_led(sw, WR_R_DISPLAY)
+        liga_led(sw, WR_L_DISPLAY)
+        if b == 0b0101:
+            break
+    
     # for i in range(20):
     #     ioctl(fd, RD_PBUTTONS)
     #     red = os.read(fd, 4); # read 4 bytes and store in red var
@@ -57,21 +82,21 @@ def main():
     os.close(fd)
 
 def le_switch():
+    sleep(0.1)
     ioctl(fd, RD_SWITCHES)
     red = os.read(fd, 4); # read 4 bytes and store in red var
-    #red = os.read(fd, 4); # read 4 bytes and store in red var
+    red = os.read(fd, 4); # read 4 bytes and store in red var
     n = int.from_bytes(red, 'little')
     print(f"switch {n:016b}")
-    sleep(0.1)
     return n
 
 def le_botao():
+    sleep(0.1)
     ioctl(fd, RD_PBUTTONS)
     red = os.read(fd, 4); # read 4 bytes and store in red var
-    #red = os.read(fd, 4); # read 4 bytes and store in red var
+    red = os.read(fd, 4); # read 4 bytes and store in red var
     n = int.from_bytes(red, 'little')
     print(f"buttons {n:04b}")
-    sleep(0.1)
     return n
 
 def liga_led(leds, cor):
