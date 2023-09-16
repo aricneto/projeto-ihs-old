@@ -34,14 +34,14 @@ def main():
         #liga_led(0b101010101, WR_GREEN_LEDS)
         # primeiro 0 é o decimal
         #sleep(2)
-        for i in range(30):
+        for i in range(10):
             liga_led(fd, bitwise_left_shift_wraparound(cubo, 8*i, 32), WR_L_DISPLAY)
             liga_led(fd, bitwise_left_shift_wraparound(cubo, 8*i, 32), WR_L_DISPLAY)
             liga_led(fd, bitwise_left_shift_wraparound(cubo, 8*i, 32), WR_R_DISPLAY)
             liga_led(fd, bitwise_left_shift_wraparound(cubo, 8*i, 32), WR_R_DISPLAY)
             sleep(0.5)
 
-        sleep(2)
+        sleep(1)
 
         print("botao")
 
@@ -50,17 +50,17 @@ def main():
             sw = le_switch(fd)
             liga_led(fd, b, WR_GREEN_LEDS)
             liga_led(fd, sw, WR_RED_LEDS)
-            # liga_led(sw, WR_R_DISPLAY)
-            # liga_led(sw, WR_L_DISPLAY)
+            liga_led(fd, sw, WR_R_DISPLAY)
+            liga_led(fd, sw, WR_L_DISPLAY)
             if b == 0b0101:
                 break
 
     except OSError as e:
         print(f"Error opening or accessing {fd}: {e}")
-        sys.exit(1)
+        # sys.exit(1)
 
     os.close(fd)
-    sys.exit(0)
+    # sys.exit(0)
 
 def bitwise_left_shift_wraparound(number, shift, bits):
     # Ensure that shift is within the range of bits
